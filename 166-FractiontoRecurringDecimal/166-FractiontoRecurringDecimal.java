@@ -1,6 +1,3 @@
-        if (numerator == 0) return "0";
-        
-        StringBuilder result = new StringBuilder();
         // Determine the sign
         if (numerator < 0 ^ denominator < 0) result.append("-");
         
@@ -33,6 +30,9 @@
         
         return result.toString();
     }
-public class Solution {
+        StringBuilder result = new StringBuilder();
+        
     public String fractionToDecimal(int numerator, int denominator) {
+        if (numerator == 0) return "0";
+public class Solution {
 1
