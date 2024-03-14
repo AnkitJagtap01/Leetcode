@@ -1,14 +1,25 @@
-                ans += map.get(sum-k);
-            if(map.containsKey(sum-k)){
-            }
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-            if(map.containsKey(sum)){
-                map.put(sum, map.get(sum)+1);
-            } else {
-                map.put(sum, 1);
-            }
-        }
+        map.put(0,1); //empty subarray
+        int ans = 0;
+        int sum = 0;
+        for(int j=0; j<nums.length; j++){
+            sum += nums[j];
 
-        return ans;
-        
-[
+            if(map.containsKey(sum-k)){
+                ans += map.get(sum-k);
+            }
+
+            if(map.containsKey(sum)){
+                map.put(sum, map.get(sum)+1);
+            } else {
+                map.put(sum, 1);
+            }
+        }
+
+        return ans;
+        
+    }
+}
