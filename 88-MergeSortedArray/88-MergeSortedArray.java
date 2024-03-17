@@ -1,18 +1,23 @@
-                p1--;
-            } else {
-                nums1[pMerge] = nums2[p2];
-                p2--;
-            }
-        int p2 = n - 1;
-        int pMerge = m + n - 1;
+import java.util.HashSet;
+import java.util.Set;
 
-        // Iterate over nums1 and nums2 from the end, and merge them into nums1
-        while (p1 >= 0 && p2 >= 0) {
-            if (nums1[p1] > nums2[p2]) {
-                nums1[pMerge] = nums1[p1];
-public class Solution {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
-        // Initialize two pointers for nums1 and nums2 respectively, and
-        // one pointer for the end of the merged array
-        int p1 = m - 1;
-[
+public class Solution {
+    public int minimumOperations(int[] nums) {
+        Set<Integer> uniqueValues = new HashSet<>();
+        
+        for (int num : nums) {
+            if (num != 0) {
+                uniqueValues.add(num);
+            }
+        }
+        
+        // The number of operations is the number of unique non-zero values
+        return uniqueValues.size();
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.minimumOperations(new int[]{1, 5, 0, 3, 5})); // Output: 3
+        System.out.println(solution.minimumOperations(new int[]{0})); // Output: 0
+    }
+}
