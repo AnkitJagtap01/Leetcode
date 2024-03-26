@@ -1,4 +1,4 @@
-// TIme: O(K * E) Space: O(N)
+// Time: O(K * E) Space: O(N)
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
         int[] costs = new int[n];
         Arrays.fill(costs, Integer.MAX_VALUE);
