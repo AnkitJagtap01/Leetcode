@@ -1,20 +1,27 @@
-        List<int[]> result = new ArrayList<>();
-        int[] currentInterval = intervals[0];
-        result.add(currentInterval);
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        if (intervals.length <= 1) {
+            return intervals;
+        }
 
-        for (int[] interval : intervals) {
-            int currentEnd = currentInterval[1];
+        // Sort the intervals based on the start time
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
 
-            if (interval[0] <= currentEnd) { // Overlap, so we merge the intervals
+        List<int[]> result = new ArrayList<>();
+        int[] currentInterval = intervals[0];
+        result.add(currentInterval);
 
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
-        // Sort the intervals based on the start time
+        for (int[] interval : intervals) {
+            int currentEnd = currentInterval[1];
 
-        }
-        if (intervals.length <= 1) {
-            return intervals;
-    public int[][] merge(int[][] intervals) {
-class Solution {
-                currentInterval[1] = Math.max(currentEnd, interval[1]);
-            } else { // No overlap, add to results and move to the next
-[
+            if (interval[0] <= currentEnd) { // Overlap, so we merge the intervals
+                currentInterval[1] = Math.max(currentEnd, interval[1]);
+            } else { // No overlap, add to results and move to the next
+                currentInterval = interval;
+                result.add(currentInterval);
+            }
+        }
+
+        return result.toArray(new int[result.size()][]);
+    }
+}
