@@ -1,26 +1,27 @@
-            // Move next to the next number after the current number
-            next = (long)num + 1;
-        }
+class Solution {
+    public List<List<Integer>> findMissingRanges(int[] nums, int lower, int upper) {
+        List<List<Integer>> result = new ArrayList<>();
+        
+        // The next number we need to see to continue without a gap
+        long next = lower; // Use long to avoid overflow
 
-            }
-            if (num > next) {
-                result.add(List.of((int)next, num - 1));
-            // If there's a gap between the next needed number and the current number
-            if (num < next) continue;
+        for (int num : nums) {
+            // If the current number is less than the next needed number, skip it
+            if (num < next) continue;
 
-            // If the current number is less than the next needed number, skip it
+            // If there's a gap between the next needed number and the current number
+            if (num > next) {
+                result.add(List.of((int)next, num - 1));
+            }
+            // Move next to the next number after the current number
+            next = (long)num + 1;
+        }
 
-        for (int num : nums) {
-        
-        // The next number we need to see to continue without a gap
-        long next = lower; // Use long to avoid overflow
-        // Check if there's a gap between the last number and upper
-        if (next <= upper) {
-            result.add(List.of((int)next, upper));
-        List<List<Integer>> result = new ArrayList<>();
-    public List<List<Integer>> findMissingRanges(int[] nums, int lower, int upper) {
-class Solution {
-        }
+        // Check if there's a gap between the last number and upper
+        if (next <= upper) {
+            result.add(List.of((int)next, upper));
+        }
 
-        return result;
-[
+        return result;
+    }
+}
