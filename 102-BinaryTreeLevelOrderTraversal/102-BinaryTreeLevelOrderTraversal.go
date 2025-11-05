@@ -1,6 +1,3 @@
-
-            if node.Left != nil {
-                queue = append(queue, node.Left)
             }
             if node.Right != nil {
                 queue = append(queue, node.Right)
